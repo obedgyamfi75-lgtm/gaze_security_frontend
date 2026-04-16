@@ -1,5 +1,5 @@
 // =============================================================================
-// HUBTEL SECOPS PLATFORM - TYPE DEFINITIONS
+// gazesecurity SECOPS PLATFORM - TYPE DEFINITIONS
 // =============================================================================
 
 export * from "./entities";

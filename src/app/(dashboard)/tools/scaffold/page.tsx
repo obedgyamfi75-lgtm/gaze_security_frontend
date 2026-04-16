@@ -263,7 +263,7 @@ func main() {
 const sampleCode = `#!/usr/bin/env python3
 """
 POC: IDOR Vulnerability Test
-Target: api.hubtel.com
+Target: api.gazesecurity.com
 Generated: 2024-12-30
 
 Description:
@@ -526,7 +526,7 @@ export default function ScaffoldPage() {
                 </div>
               </div>
 
-              <Button 
+              <Button
                 onClick={handleGenerate}
                 className="w-full bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg shadow-primary/20"
               >
@@ -552,9 +552,9 @@ export default function ScaffoldPage() {
                   </CardDescription>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Button 
-                    variant="outline" 
-                    size="sm" 
+                  <Button
+                    variant="outline"
+                    size="sm"
                     className="border-border/50"
                     onClick={handleCopy}
                   >
@@ -595,7 +595,7 @@ export default function ScaffoldPage() {
                     {languageOptions.find(l => l.id === language)?.name}
                   </Badge>
                 </div>
-                
+
                 {/* Code Content */}
                 <ScrollArea className="h-[500px] border border-t-0 border-border/50 rounded-b-lg">
                   <pre className="p-4 text-sm font-mono leading-relaxed">
@@ -606,15 +606,15 @@ export default function ScaffoldPage() {
                             {i + 1}
                           </span>
                           <span className={cn(
-                            line.startsWith('#') || line.startsWith('"""') || line.startsWith('//') 
-                              ? "text-muted-foreground" 
+                            line.startsWith('#') || line.startsWith('"""') || line.startsWith('//')
+                              ? "text-muted-foreground"
                               : line.includes('def ') || line.includes('class ') || line.includes('function ')
-                              ? "text-primary"
-                              : line.includes('import ') || line.includes('from ')
-                              ? "text-yellow-500"
-                              : line.includes("'") || line.includes('"')
-                              ? "text-green-500"
-                              : ""
+                                ? "text-primary"
+                                : line.includes('import ') || line.includes('from ')
+                                  ? "text-yellow-500"
+                                  : line.includes("'") || line.includes('"')
+                                    ? "text-green-500"
+                                    : ""
                           )}>
                             {line || ' '}
                           </span>

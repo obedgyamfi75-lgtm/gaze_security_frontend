@@ -72,7 +72,7 @@ interface ScanJob {
 const scanHistory: ScanJob[] = [
   {
     id: "SCAN-001",
-    target: "api.hubtel.com",
+    target: "api.gazesecurity.com",
     status: "completed",
     startedAt: "2024-12-30T10:30:00",
     completedAt: "2024-12-30T10:35:22",
@@ -83,7 +83,7 @@ const scanHistory: ScanJob[] = [
   },
   {
     id: "SCAN-002",
-    target: "merchant.hubtel.com",
+    target: "merchant.gazesecurity.com",
     status: "completed",
     startedAt: "2024-12-29T14:15:00",
     completedAt: "2024-12-29T14:22:45",
@@ -94,7 +94,7 @@ const scanHistory: ScanJob[] = [
   },
   {
     id: "SCAN-003",
-    target: "payment-api.hubtel.com",
+    target: "payment-api.gazesecurity.com",
     status: "failed",
     startedAt: "2024-12-28T09:00:00",
     totalRequests: 234,
@@ -141,7 +141,7 @@ export default function ReconPage() {
     const interval = setInterval(() => {
       progress += 10;
       setScanProgress(progress);
-      
+
       const newResults = mockResults.slice(0, Math.floor(progress / 10));
       setResults(newResults);
 
@@ -266,7 +266,7 @@ export default function ReconPage() {
                     />
                   </div>
                   {!isScanning ? (
-                    <Button 
+                    <Button
                       onClick={startScan}
                       disabled={!target}
                       className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg shadow-primary/20"
@@ -275,7 +275,7 @@ export default function ReconPage() {
                       Start Scan
                     </Button>
                   ) : (
-                    <Button 
+                    <Button
                       onClick={stopScan}
                       variant="destructive"
                     >
@@ -425,7 +425,7 @@ export default function ReconPage() {
                   <span className="text-sm font-mono text-muted-foreground">{scanProgress}%</span>
                 </div>
                 <div className="h-2 bg-muted/50 rounded-full overflow-hidden">
-                  <div 
+                  <div
                     className="h-full bg-primary transition-all duration-300 ease-out"
                     style={{ width: `${scanProgress}%` }}
                   />
@@ -495,11 +495,11 @@ export default function ReconPage() {
 
 // Result Row Component
 function ResultRow({ result }: { result: ScanResult }) {
-  const statusColor = 
+  const statusColor =
     result.status >= 200 && result.status < 300 ? "text-green-500" :
-    result.status >= 300 && result.status < 400 ? "text-blue-500" :
-    result.status >= 400 && result.status < 500 ? "text-yellow-500" :
-    "text-red-500";
+      result.status >= 300 && result.status < 400 ? "text-blue-500" :
+        result.status >= 400 && result.status < 500 ? "text-yellow-500" :
+          "text-red-500";
 
   return (
     <div className="flex items-center gap-4 p-2 rounded-lg hover:bg-muted/30 transition-colors group">
@@ -515,9 +515,9 @@ function ResultRow({ result }: { result: ScanResult }) {
       </span>
       <div className="flex gap-1 w-32 justify-end">
         {result.flags.map((flag) => (
-          <Badge 
-            key={flag} 
-            variant="outline" 
+          <Badge
+            key={flag}
+            variant="outline"
             className={cn(
               "text-[9px]",
               flag === "IDOR_CANDIDATE" && "bg-orange-500/10 text-orange-500 border-orange-500/20",

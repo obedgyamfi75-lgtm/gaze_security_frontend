@@ -138,7 +138,7 @@ export default function UsersPage() {
           <Button variant="outline" size="icon" onClick={refetch} className="border-border/50">
             <RefreshCw className="h-4 w-4" />
           </Button>
-          <Button 
+          <Button
             className="bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg shadow-primary/20"
             onClick={() => setInviteDialogOpen(true)}
           >
@@ -231,8 +231,8 @@ export default function UsersPage() {
       )}
 
       {/* Invite User Dialog */}
-      <InviteUserDialog 
-        open={inviteDialogOpen} 
+      <InviteUserDialog
+        open={inviteDialogOpen}
         onOpenChange={setInviteDialogOpen}
         onSuccess={refetch}
       />
@@ -534,12 +534,12 @@ function InviteUserDialog({ open, onOpenChange, onSuccess }: InviteUserDialogPro
 
   const handleSubmit = async () => {
     if (!email) return;
-    
+
     setIsSubmitting(true);
     try {
       // Create user (backend will send invitation email)
-      await usersApi.create({ 
-        email, 
+      await usersApi.create({
+        email,
         role,
         firstName: "",
         lastName: "",
@@ -570,7 +570,7 @@ function InviteUserDialog({ open, onOpenChange, onSuccess }: InviteUserDialogPro
             <Label className="text-xs uppercase tracking-wider text-muted-foreground">Email Address</Label>
             <Input
               type="email"
-              placeholder="user@hubtel.com"
+              placeholder="user@gazesecurity.com"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               className="bg-muted/30 border-border/50"
@@ -620,7 +620,7 @@ function InviteUserDialog({ open, onOpenChange, onSuccess }: InviteUserDialogPro
           <Button variant="outline" onClick={() => onOpenChange(false)} className="border-border/50">
             Cancel
           </Button>
-          <Button 
+          <Button
             onClick={handleSubmit}
             disabled={isSubmitting || !email}
             className="bg-primary hover:bg-primary/90 text-primary-foreground"

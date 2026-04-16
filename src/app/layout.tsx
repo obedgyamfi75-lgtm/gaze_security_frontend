@@ -20,7 +20,7 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: "GAZE Security Platform",
   description: "Enterprise Security Assessment and Vulnerability Management Platform",
-  keywords: ["security", "vulnerability", "assessment", "secops", "hubtel"],
+  keywords: ["security", "vulnerability", "assessment", "secops", "gazesecurity"],
 };
 
 export default function RootLayout({

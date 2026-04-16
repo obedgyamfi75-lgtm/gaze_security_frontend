@@ -120,15 +120,18 @@ function LoginPageContent() {
       <div className="min-h-screen flex items-center justify-center bg-background p-8">
         <div className="w-full max-w-md space-y-8">
           {/* Logo */}
-          <div className="flex items-center justify-center gap-3">
-            <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary/20 border border-primary/30">
+          <Link
+            href="/"
+            className="relative z-20 flex items-center gap-3 cursor-pointer hover:opacity-80 transition-opacity"
+          >
+            <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary/20 border border-primary/30 glow-sm">
               <Shield className="h-7 w-7 text-primary" />
             </div>
             <div>
-              <h1 className="text-2xl font-bold">GAZE</h1>
+              <p className="text-2xl font-bold tracking-tight">GAZE</p>
               <p className="text-sm text-muted-foreground">Security Platform</p>
             </div>
-          </div>
+          </Link>
 
           {/* Header */}
           <div className="space-y-2 text-center">
@@ -226,10 +229,10 @@ function LoginPageContent() {
               }}
             />
           ))}
-        </div>
+        </div> 
 
         {/* Scan Line Effect */}
-        <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute inset-0">
           <div className="absolute w-full h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent animate-scan-line" />
         </div>
 
@@ -242,7 +245,7 @@ function LoginPageContent() {
                 <Shield className="h-7 w-7 text-primary" />
               </div>
               <div>
-                <h1 className="text-2xl font-bold tracking-tight">GAZE</h1>
+                <p className="text-2xl font-bold tracking-tight">GAZE</p>
                 <p className="text-sm text-muted-foreground">Security Platform</p>
               </div>
             </div>
@@ -288,7 +291,7 @@ function LoginPageContent() {
       <div className="flex-1 flex items-center justify-center p-8">
         <div className="w-full max-w-md space-y-8">
           {/* Mobile Logo */}
-          <div className="lg:hidden flex items-center justify-center gap-3">
+          <Link href="/" className="lg:hidden flex items-center justify-center gap-3 cursor-pointer hover:opacity-80 transition-opacity">
             <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary/20 border border-primary/30">
               <Shield className="h-7 w-7 text-primary" />
             </div>
@@ -296,7 +299,7 @@ function LoginPageContent() {
               <h1 className="text-2xl font-bold">GAZE</h1>
               <p className="text-sm text-muted-foreground">Security Platform</p>
             </div>
-          </div>
+          </Link>
 
           {/* Header */}
           <div className="space-y-2 text-center lg:text-left">
@@ -325,7 +328,7 @@ function LoginPageContent() {
                   <Input
                     id="email"
                     type="email"
-                    placeholder="name@hubtel.com"
+                    placeholder="name@gazesecurity.com"
                     value={formData.email}
                     onChange={(e) =>
                       setFormData({ ...formData, email: e.target.value })

@@ -91,7 +91,9 @@ async function apiRequest<T>(
       if (response.status === 401 && typeof window !== "undefined") {
         // Session expired — redirect to login unless we're already there
         sessionStorage.removeItem("auth_user");
-        if (!window.location.pathname.startsWith("/login")) {
+        const { pathname } = window.location;
+        const PUBLIC_PATHS = ["/", "/about", "/pricing"];
+        if (!pathname.startsWith("/login") && !PUBLIC_PATHS.includes(pathname)) {
           window.location.href = "/login";
         }
       }

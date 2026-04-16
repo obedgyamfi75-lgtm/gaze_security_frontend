@@ -17,7 +17,7 @@ Modern security operations dashboard built with Next.js 15, React 19, shadcn/ui,
 
 - Node.js 18+ (LTS recommended)
 - npm, pnpm, or yarn
-- Backend API running (see hubtel-secops-backend)
+- Backend API running (see gazesecurity-secops-backend)
 
 ### Development Setup
 
@@ -60,24 +60,24 @@ After running `npm run build`, the output is in `.next/` directory:
 
 ```bash
 # Build Docker image
-docker build -t hubtel-secops-frontend .
+docker build -t gazesecurity-secops-frontend .
 
 # Run container
 docker run -p 3000:3000 \
   -e NEXT_PUBLIC_API_URL=http://your-backend:8000/api \
-  hubtel-secops-frontend
+  gazesecurity-secops-frontend
 ```
 
 ### Docker Deployment
 
 ```bash
 # Build image
-docker build -t hubtel-secops-frontend .
+docker build -t gazesecurity-secops-frontend .
 
 # Run container
 docker run -p 3000:3000 \
   -e NEXT_PUBLIC_API_URL=http://backend:8000/api \
-  hubtel-secops-frontend
+  gazesecurity-secops-frontend
 ```
 
 ## Environment Variables
@@ -89,7 +89,7 @@ docker run -p 3000:3000 \
 ## Project Structure
 
 ```
-hubtel-secops-frontend/
+gazesecurity-secops-frontend/
 ├── src/
 │   ├── app/                    # Next.js App Router
 │   │   ├── (auth)/            # Auth pages (login)
@@ -138,11 +138,11 @@ The frontend connects to the Flask backend API. Ensure:
 
 ```bash
 # Terminal 1: Start backend
-cd hubtel-secops-backend
+cd gazesecurity-secops-backend
 docker compose up
 
 # Terminal 2: Start frontend
-cd hubtel-secops-frontend
+cd gazesecurity-secops-frontend
 NEXT_PUBLIC_API_URL=http://localhost:8000/api npm run dev
 ```
 

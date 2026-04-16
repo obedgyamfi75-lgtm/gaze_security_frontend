@@ -794,12 +794,12 @@ function AssetDetailsDialog({ asset, onClose, onRefetch }: { asset: Asset | null
                 <div className="flex items-center gap-2">
                   <Calendar className="h-4 w-4 text-muted-foreground" />
                   <span className="text-sm font-mono">
-                    {asset.lastAssessment 
-                      ? new Date(asset.lastAssessment).toLocaleDateString('en-US', { 
-                          year: 'numeric', 
-                          month: 'short', 
-                          day: 'numeric' 
-                        })
+                    {asset.lastAssessment
+                      ? new Date(asset.lastAssessment).toLocaleDateString('en-US', {
+                        year: 'numeric',
+                        month: 'short',
+                        day: 'numeric'
+                      })
                       : "Never assessed"}
                   </span>
                 </div>
@@ -809,12 +809,12 @@ function AssetDetailsDialog({ asset, onClose, onRefetch }: { asset: Asset | null
                 <div className="flex items-center gap-2">
                   <Calendar className="h-4 w-4 text-muted-foreground" />
                   <span className="text-sm font-mono">
-                    {asset.nextAssessment 
-                      ? new Date(asset.nextAssessment).toLocaleDateString('en-US', { 
-                          year: 'numeric', 
-                          month: 'short', 
-                          day: 'numeric' 
-                        })
+                    {asset.nextAssessment
+                      ? new Date(asset.nextAssessment).toLocaleDateString('en-US', {
+                        year: 'numeric',
+                        month: 'short',
+                        day: 'numeric'
+                      })
                       : "Not scheduled"}
                   </span>
                 </div>
@@ -934,14 +934,14 @@ function InfoField({ label, children }: { label: string; children: React.ReactNo
   );
 }
 
-function FindingStatCard({ 
-  count, 
-  label, 
-  color 
-}: { 
-  count: number; 
-  label: string; 
-  color: 'red' | 'orange' | 'yellow' | 'green' | 'blue' 
+function FindingStatCard({
+  count,
+  label,
+  color
+}: {
+  count: number;
+  label: string;
+  color: 'red' | 'orange' | 'yellow' | 'green' | 'blue'
 }) {
   const colorMap = {
     red: { bg: 'bg-red-500/10', text: 'text-red-500', border: 'border-red-500/20' },
@@ -1034,7 +1034,7 @@ function EditAssetDialog({ asset, open, onOpenChange, onSuccess }: EditAssetDial
           <div className="space-y-2">
             <Label className="text-xs uppercase tracking-wider text-muted-foreground">Asset Name</Label>
             <Input
-              placeholder="e.g., api.hubtel.com"
+              placeholder="e.g., api.gazesecurity.com"
               className="font-mono bg-muted/30 border-border/50"
               value={formData.name}
               onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
@@ -1238,7 +1238,7 @@ function CreateAssetDialog({ open, onOpenChange, products, onSuccess }: CreateAs
           <div className="space-y-2">
             <Label className="text-xs uppercase tracking-wider text-muted-foreground">Asset Name</Label>
             <Input
-              placeholder="e.g., api.hubtel.com"
+              placeholder="e.g., api.gazesecurity.com"
               className="font-mono bg-muted/30 border-border/50"
               value={formData.name}
               onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
