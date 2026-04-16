@@ -1,0 +1,553 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* =============================================================================
+   HUBTEL SECOPS - GREYNOISE-INSPIRED THEME
+   Dark-first cybersecurity aesthetic with teal/cyan accents
+   ============================================================================= */
+
+@layer base {
+  :root {
+    /* =========================================================================
+       LIGHT THEME - Clean, professional with teal accents
+       ========================================================================= */
+    --background: 0 0% 98%;           /* #fafafa - soft white */
+    --foreground: 0 0% 9%;            /* #171717 - near black text */
+    
+    --card: 0 0% 100%;                /* #ffffff - pure white cards */
+    --card-foreground: 0 0% 9%;
+    
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 9%;
+    
+    --primary: 166 76% 36%;           /* #0d9373 - teal (darker for light bg) */
+    --primary-foreground: 0 0% 100%;  /* white text on primary */
+    
+    --secondary: 0 0% 93%;            /* #ededed - light gray */
+    --secondary-foreground: 0 0% 9%;
+    
+    --muted: 0 0% 93%;                /* #ededed */
+    --muted-foreground: 0 0% 40%;     /* #666666 - medium gray text */
+    
+    --accent: 187 72% 40%;            /* #1a9dab - cyan accent */
+    --accent-foreground: 0 0% 100%;
+    
+    --destructive: 0 84% 60%;         /* #ef4444 - red */
+    --destructive-foreground: 0 0% 100%;
+    
+    --border: 0 0% 89%;               /* #e3e3e3 */
+    --input: 0 0% 89%;
+    --ring: 166 76% 36%;              /* teal ring */
+    
+    --radius: 0.5rem;
+
+    /* Chart Colors - Light */
+    --chart-1: 166 76% 36%;           /* teal */
+    --chart-2: 0 84% 60%;             /* red */
+    --chart-3: 25 95% 53%;            /* orange */
+    --chart-4: 45 93% 47%;            /* yellow */
+    --chart-5: 142 71% 45%;           /* green */
+
+    /* Sidebar - Light */
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 0 0% 9%;
+    --sidebar-primary: 166 76% 36%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 0 0% 95%;
+    --sidebar-accent-foreground: 0 0% 9%;
+    --sidebar-border: 0 0% 89%;
+    --sidebar-ring: 166 76% 36%;
+
+    /* Security Severity Colors */
+    --severity-critical: 0 84% 60%;    /* #ef4444 red */
+    --severity-high: 25 95% 53%;       /* #f97316 orange */
+    --severity-medium: 45 93% 47%;     /* #eab308 yellow */
+    --severity-low: 142 71% 45%;       /* #22c55e green */
+    --severity-info: 199 89% 48%;      /* #0ea5e9 blue */
+  }
+
+  .dark {
+    /* =========================================================================
+       DARK THEME - GreyNoise-inspired cybersecurity aesthetic
+       Deep blacks, teal/cyan accents, high contrast
+       ========================================================================= */
+    --background: 0 0% 4%;            /* #0a0a0a - near black */
+    --foreground: 0 0% 93%;           /* #ededed - soft white text */
+    
+    --card: 0 0% 7%;                  /* #121212 - slightly lighter than bg */
+    --card-foreground: 0 0% 93%;
+    
+    --popover: 0 0% 7%;
+    --popover-foreground: 0 0% 93%;
+    
+    --primary: 166 76% 46%;           /* #00d4aa - vibrant teal */
+    --primary-foreground: 0 0% 4%;    /* dark text on primary */
+    
+    --secondary: 0 0% 12%;            /* #1f1f1f - dark gray */
+    --secondary-foreground: 0 0% 93%;
+    
+    --muted: 0 0% 12%;                /* #1f1f1f */
+    --muted-foreground: 0 0% 55%;     /* #8c8c8c - medium gray text */
+    
+    --accent: 187 92% 69%;            /* #5eead4 - bright cyan */
+    --accent-foreground: 0 0% 4%;
+    
+    --destructive: 0 84% 60%;         /* #ef4444 - bright red */
+    --destructive-foreground: 0 0% 100%;
+    
+    --border: 0 0% 15%;               /* #262626 - subtle border */
+    --input: 0 0% 12%;                /* #1f1f1f - input background */
+    --ring: 166 76% 46%;              /* teal ring */
+
+    /* Chart Colors - Dark */
+    --chart-1: 166 76% 46%;           /* teal */
+    --chart-2: 0 72% 51%;             /* red */
+    --chart-3: 25 95% 53%;            /* orange */
+    --chart-4: 45 93% 47%;            /* yellow */
+    --chart-5: 142 71% 45%;           /* green */
+
+    /* Sidebar - Dark */
+    --sidebar-background: 0 0% 5%;    /* #0d0d0d */
+    --sidebar-foreground: 0 0% 93%;
+    --sidebar-primary: 166 76% 46%;
+    --sidebar-primary-foreground: 0 0% 4%;
+    --sidebar-accent: 0 0% 12%;
+    --sidebar-accent-foreground: 0 0% 93%;
+    --sidebar-border: 0 0% 15%;
+    --sidebar-ring: 166 76% 46%;
+
+    /* Security Severity Colors - Dark (adjusted for dark bg) */
+    --severity-critical: 0 72% 51%;    /* #dc2626 - slightly muted red */
+    --severity-high: 25 95% 53%;       /* #f97316 orange */
+    --severity-medium: 45 93% 47%;     /* #eab308 yellow */
+    --severity-low: 142 71% 45%;       /* #22c55e green */
+    --severity-info: 187 92% 69%;      /* #5eead4 cyan */
+  }
+}
+
+/* =============================================================================
+   BASE STYLES
+   ============================================================================= */
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Custom scrollbar - Dark cyber style */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-border rounded-full transition-colors;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-muted-foreground/50;
+  }
+
+  /* Dark mode scrollbar */
+  .dark ::-webkit-scrollbar-thumb {
+    background: hsl(var(--primary) / 0.3);
+  }
+
+  .dark ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--primary) / 0.5);
+  }
+
+  /* Focus visible outline - teal glow */
+  *:focus-visible {
+    @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
+  }
+
+  /* Selection color */
+  ::selection {
+    @apply bg-primary/30 text-foreground;
+  }
+}
+
+/* =============================================================================
+   COMPONENT STYLES
+   ============================================================================= */
+
+@layer components {
+  /* ---------------------------------------------------------------------------
+     Severity Badges - Security status indicators
+     --------------------------------------------------------------------------- */
+  .severity-critical {
+    @apply bg-red-500/10 text-red-500 border-red-500/20;
+  }
+
+  .severity-high {
+    @apply bg-orange-500/10 text-orange-500 border-orange-500/20;
+  }
+
+  .severity-medium {
+    @apply bg-yellow-500/10 text-yellow-500 border-yellow-500/20;
+  }
+
+  .severity-low {
+    @apply bg-green-500/10 text-green-500 border-green-500/20;
+  }
+
+  .severity-info {
+    @apply bg-cyan-500/10 text-cyan-500 border-cyan-500/20;
+  }
+
+  /* ---------------------------------------------------------------------------
+     Status Badges
+     --------------------------------------------------------------------------- */
+  .status-open {
+    @apply bg-red-500/10 text-red-500;
+  }
+
+  .status-in-progress {
+    @apply bg-yellow-500/10 text-yellow-500;
+  }
+
+  .status-resolved {
+    @apply bg-green-500/10 text-green-500;
+  }
+
+  .status-accepted {
+    @apply bg-cyan-500/10 text-cyan-500;
+  }
+
+  /* ---------------------------------------------------------------------------
+     Tag Pills - GreyNoise style tags
+     --------------------------------------------------------------------------- */
+  .tag-pill {
+    @apply inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-medium 
+           rounded-md bg-muted border border-border transition-colors
+           hover:border-primary/50 hover:bg-primary/5;
+  }
+
+  .tag-pill-active {
+    @apply bg-primary/10 border-primary/30 text-primary;
+  }
+
+  /* ---------------------------------------------------------------------------
+     Glass Effect - Frosted glass morphism
+     --------------------------------------------------------------------------- */
+  .glass {
+    @apply bg-background/80 backdrop-blur-xl border border-border/50;
+  }
+
+  .glass-card {
+    @apply bg-card/80 backdrop-blur-xl border border-border/50 rounded-lg;
+  }
+
+  /* ---------------------------------------------------------------------------
+     Card Styles
+     --------------------------------------------------------------------------- */
+  .card-hover {
+    @apply transition-all duration-200 
+           hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5;
+  }
+
+  .card-glow {
+    @apply relative overflow-hidden;
+  }
+
+  .card-glow::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent 
+           opacity-0 transition-opacity duration-300;
+  }
+
+  .card-glow:hover::before {
+    @apply opacity-100;
+  }
+
+  /* ---------------------------------------------------------------------------
+     Metric Cards - Dashboard stats
+     --------------------------------------------------------------------------- */
+  .metric-card {
+    @apply relative overflow-hidden rounded-xl border bg-card p-6 
+           transition-all duration-200 hover:shadow-lg hover:shadow-primary/5
+           hover:border-primary/20;
+  }
+
+  .metric-card::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent 
+           opacity-0 transition-opacity duration-200;
+  }
+
+  .metric-card:hover::before {
+    @apply opacity-100;
+  }
+
+  /* ---------------------------------------------------------------------------
+     Text Styles
+     --------------------------------------------------------------------------- */
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent;
+  }
+
+  .text-glow {
+    text-shadow: 0 0 20px hsl(var(--primary) / 0.5);
+  }
+
+  /* Monospace for data (IPs, CVEs, hashes) */
+  .font-data {
+    @apply font-mono text-sm tracking-tight;
+  }
+
+  /* ---------------------------------------------------------------------------
+     Cyber Grid Background
+     --------------------------------------------------------------------------- */
+  .bg-cyber-grid {
+    background-image: 
+      linear-gradient(to right, hsl(var(--primary) / 0.03) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(var(--primary) / 0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  /* Animated scan lines */
+  .bg-scan-lines {
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      hsl(var(--primary) / 0.03) 2px,
+      hsl(var(--primary) / 0.03) 4px
+    );
+  }
+
+  /* ---------------------------------------------------------------------------
+     Glow Effects
+     --------------------------------------------------------------------------- */
+  .glow-sm {
+    box-shadow: 0 0 10px hsl(var(--primary) / 0.3);
+  }
+
+  .glow-md {
+    box-shadow: 0 0 20px hsl(var(--primary) / 0.3);
+  }
+
+  .glow-lg {
+    box-shadow: 0 0 40px hsl(var(--primary) / 0.3);
+  }
+
+  .border-glow {
+    @apply border-primary/50;
+    box-shadow: 0 0 10px hsl(var(--primary) / 0.2), 
+                inset 0 0 10px hsl(var(--primary) / 0.05);
+  }
+
+  /* ---------------------------------------------------------------------------
+     Input Styles - Dark cyber inputs
+     --------------------------------------------------------------------------- */
+  .input-cyber {
+    @apply bg-input border-border text-foreground placeholder:text-muted-foreground
+           focus:border-primary focus:ring-1 focus:ring-primary/50
+           transition-all duration-200;
+  }
+
+  /* ---------------------------------------------------------------------------
+     Button Variants
+     --------------------------------------------------------------------------- */
+  .btn-cyber {
+    @apply bg-primary text-primary-foreground font-medium
+           hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/25
+           active:scale-[0.98] transition-all duration-200;
+  }
+
+  .btn-cyber-outline {
+    @apply border border-primary/50 text-primary bg-transparent
+           hover:bg-primary/10 hover:border-primary
+           active:scale-[0.98] transition-all duration-200;
+  }
+
+  /* ---------------------------------------------------------------------------
+     Table Styles - Data tables
+     --------------------------------------------------------------------------- */
+  .table-cyber {
+    @apply w-full text-sm;
+  }
+
+  .table-cyber th {
+    @apply text-left text-xs font-medium text-muted-foreground uppercase tracking-wider
+           px-4 py-3 bg-muted/50 border-b border-border;
+  }
+
+  .table-cyber td {
+    @apply px-4 py-3 border-b border-border;
+  }
+
+  .table-cyber tr:hover td {
+    @apply bg-muted/30;
+  }
+
+  /* ---------------------------------------------------------------------------
+     Loading States
+     --------------------------------------------------------------------------- */
+  .skeleton-cyber {
+    @apply animate-pulse bg-gradient-to-r from-muted via-muted/50 to-muted 
+           bg-[length:200%_100%] animate-shimmer;
+  }
+}
+
+/* =============================================================================
+   UTILITY CLASSES
+   ============================================================================= */
+
+@layer utilities {
+  /* Animation delays */
+  .delay-75 { animation-delay: 75ms; }
+  .delay-100 { animation-delay: 100ms; }
+  .delay-150 { animation-delay: 150ms; }
+  .delay-200 { animation-delay: 200ms; }
+  .delay-300 { animation-delay: 300ms; }
+  .delay-500 { animation-delay: 500ms; }
+
+  /* Animation utilities */
+  .animate-in {
+    animation: fade-in 0.3s ease-out forwards;
+  }
+
+  /* Grid pattern background */
+  .bg-grid {
+    background-image: 
+      linear-gradient(to right, hsl(var(--border) / 0.5) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(var(--border) / 0.5) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+
+  /* Dot pattern background */
+  .bg-dots {
+    background-image: radial-gradient(hsl(var(--muted-foreground) / 0.15) 1px, transparent 1px);
+    background-size: 16px 16px;
+  }
+
+  /* Matrix-style vertical lines */
+  .bg-matrix-lines {
+    background-image: repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 2px,
+      hsl(var(--primary) / 0.02) 2px,
+      hsl(var(--primary) / 0.02) 4px
+    );
+  }
+
+  /* Noise texture overlay */
+  .noise-overlay {
+    position: relative;
+  }
+
+  .noise-overlay::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    opacity: 0.02;
+    pointer-events: none;
+  }
+
+  /* Hide scrollbar but keep functionality */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Text truncation */
+  .truncate-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .truncate-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+/* =============================================================================
+   SPECIAL EFFECTS
+   ============================================================================= */
+
+/* Animated gradient border */
+@property --angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.gradient-border {
+  --angle: 0deg;
+  border: 2px solid transparent;
+  background: 
+    linear-gradient(hsl(var(--card)), hsl(var(--card))) padding-box,
+    conic-gradient(from var(--angle), hsl(var(--primary)), hsl(var(--accent)), hsl(var(--primary))) border-box;
+  animation: rotate-gradient 4s linear infinite;
+}
+
+@keyframes rotate-gradient {
+  to {
+    --angle: 360deg;
+  }
+}
+
+/* Typing cursor effect */
+.cursor-blink::after {
+  content: '|';
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+/* Pulse ring animation */
+.pulse-ring {
+  position: relative;
+}
+
+.pulse-ring::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: inherit;
+  border: 2px solid hsl(var(--primary) / 0.5);
+  animation: pulse-ring 2s ease-out infinite;
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.2);
+    opacity: 0;
+  }
+}
